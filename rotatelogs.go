@@ -278,7 +278,7 @@ func (rl *RotateLogs) rotate_nolock(filename string) error {
 	defer guard.Run()
 
 	if rl.linkName != "" {
-		tmpLinkName := linkeName + `_symlink`
+		tmpLinkName := rl.linkName + `_symlink`
 		if err := os.Symlink(filename, tmpLinkName); err != nil {
 			return errors.Wrap(err, `failed to create new symlink`)
 		}
